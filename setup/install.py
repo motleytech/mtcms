@@ -23,10 +23,13 @@ def check_result(result, cmd, exit_on_error=True):
         logging.info("{}Success.{}".format(bcolors.OKGREEN, bcolors.ENDC))
         return True
     else:
-        logging.error("Failed during command \n{}{}{}".format(bcolors.FAIL, cmd, bcolors.ENDC))
         if exit_on_error is True:
+            logging.error("Failed during command \n{}{}{}".format(bcolors.FAIL, cmd, bcolors.ENDC))
             logging.error("Quitting!!")
             exit(1)
+        else:
+            logging.warn("Ignoring failure because of flags \n{}{}{}".format(bcolors.WARNING, cmd, bcolors.ENDC))
+
         return False
 
 
